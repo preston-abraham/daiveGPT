@@ -96,7 +96,7 @@ with columns[0]:
             st.session_state['messages'].append({"role": "assistant","content":st.session_state['response']})
             st.session_state['conv_messages'].append({"role": "assistant","content":mode + ': ' + st.session_state['response']})
             messages = st.session_state['messages']
-            warnings.warn(conversation)
+            warnings.warn(messages)
             st.experimental_rerun()
 with columns[1]:
     if st.button('Reset Conversation'):
