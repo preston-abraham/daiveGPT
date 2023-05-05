@@ -42,7 +42,7 @@ image = Image.open('dAIve.png')
 image = image.resize((100,100))
 st.image(image)
 mode = 'Dave'
-mode = st.selectbox('Person to ask: (When changing this, please reset the conversation)',['Dave'])
+mode = st.selectbox('Person to ask: (In the future, more personalities can be added)',['Dave'])
 
 
 def stream(text):
