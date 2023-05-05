@@ -91,7 +91,7 @@ with columns[0]:
             st.session_state['response'] = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=st.session_state['messages'],
-                temperature = 0.4
+                temperature = 0.3
             )['choices'][0]['message']['content']
             st.session_state['messages'].append({"role": "assistant","content":st.session_state['response']})
             st.session_state['conv_messages'].append({"role": "assistant","content":mode + ': ' + st.session_state['response']})
