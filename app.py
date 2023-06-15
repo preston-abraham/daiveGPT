@@ -7,9 +7,12 @@ openai.organization = "org-eptWwJzwl8LLZVNyAH1xBxbF"
 openai.api_key = st.secrets['api_key']
 
 
-st.title('dAIve 3.1.0')
+st.title('dAIve 3.1.2')
 
 sleep_timer = 0.1
+temperature = 0.4
+
+
 
 
 st.markdown('***New Features**: ChatGPT integration for conversations instead of just questions*')
@@ -20,6 +23,7 @@ st.image(image)
 mode = 'Dave'
 if st.checkbox('Instant Text Output'):
     sleep_timer = 0
+temperature = st.slider('GPT Randomness Factor', min_value=0, max_value=1)
 #mode = st.selectbox('Person to ask: (When changing this, please reset the conversation)',['Dave'])
 mode = st.selectbox('Person to ask: (When changing this, please reset the conversation)',['Dave','Radio Dave','Evil Dave','Reframing Assistant','Real Estate Dave','Job Interviewer','Custom'])
 
@@ -258,7 +262,7 @@ with columns[0]:
             st.session_state['response'] = openai.ChatCompletion.create(
                 model="gpt-4",
                 messages=st.session_state['messages'],
-                temperature = 0.4
+                temperature = temperature
             )['choices'][0]['message']['content']
             st.session_state['messages'].append({"role": "assistant","content":st.session_state['response']})
             st.session_state['conv_messages'].append({"role": "assistant","content":mode + ': ' + st.session_state['response']})
