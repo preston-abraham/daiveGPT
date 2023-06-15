@@ -18,7 +18,7 @@ image = Image.open('dAIve.png')
 image = image.resize((100,100))
 st.image(image)
 mode = 'Dave'
-if st.checkbox('Instanst Text Output'):
+if st.checkbox('Instant Text Output'):
     sleep_timer = 0
 #mode = st.selectbox('Person to ask: (When changing this, please reset the conversation)',['Dave'])
 mode = st.selectbox('Person to ask: (When changing this, please reset the conversation)',['Dave','Radio Dave','Evil Dave','Reframing Assistant','Real Estate Dave','Job Interviewer','Custom'])
