@@ -23,7 +23,7 @@ st.image(image)
 mode = 'Dave'
 if st.checkbox('Instant Text Output'):
     sleep_timer = 0
-temperature = st.slider('GPT Randomness Factor', min_value=0, max_value=1)
+temperature = st.slider('GPT Randomness Factor', min_value=0, max_value=1 value=0.4)
 #mode = st.selectbox('Person to ask: (When changing this, please reset the conversation)',['Dave'])
 mode = st.selectbox('Person to ask: (When changing this, please reset the conversation)',['Dave','Radio Dave','Evil Dave','Reframing Assistant','Real Estate Dave','Job Interviewer','Custom'])
 
