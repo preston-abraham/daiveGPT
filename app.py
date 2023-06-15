@@ -9,7 +9,7 @@ openai.api_key = st.secrets['api_key']
 
 st.title('dAIve 3.1.0')
 
-
+sleep_timer = 0.1
 
 
 st.markdown('***New Features**: ChatGPT integration for conversations instead of just questions*')
@@ -18,6 +18,8 @@ image = Image.open('dAIve.png')
 image = image.resize((100,100))
 st.image(image)
 mode = 'Dave'
+if st.checkbox('Instanst Text Output'):
+    sleep_timer = 0
 #mode = st.selectbox('Person to ask: (When changing this, please reset the conversation)',['Dave'])
 mode = st.selectbox('Person to ask: (When changing this, please reset the conversation)',['Dave','Radio Dave','Evil Dave','Reframing Assistant','Real Estate Dave','Job Interviewer','Custom'])
 
@@ -43,7 +45,7 @@ def stream(text):
     mo = st.markdown('')
     for i in range(len(t)+1):
         mo.markdown(" ".join(t[:i]))
-        time.sleep(0.1)
+        time.sleep(sleep_timer)
 
 st.markdown('#### Conversation will appear below')
 st.markdown('-------------------------------')
@@ -254,7 +256,7 @@ with columns[0]:
             st.session_state['messages'].append({"role": "user", "content": message})
             st.session_state['conv_messages'].append({"role": "user", "content": 'You: ' + message})
             st.session_state['response'] = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
+                model="gpt-4",
                 messages=st.session_state['messages'],
                 temperature = 0.4
             )['choices'][0]['message']['content']
